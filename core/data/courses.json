@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Scratch для начинающих",
+    "description": "Визуальное программирование для детей 7–9 лет.",
+    "min_age": 7,
+    "max_age": 9
+  },
+  {
+    "id": 2,
+    "name": "Python Junior",
+    "description": "Основы Python, задачи и мини-проекты для 10–13 лет.",
+    "min_age": 10,
+    "max_age": 13
+  },
+  {
+    "id": 3,
+    "name": "Web-студия",
+    "description": "HTML, CSS и простые сайты для 12–15 лет.",
+    "min_age": 12,
+    "max_age": 15
+  }
+]

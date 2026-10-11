@@ -1,0 +1,21 @@
+{% extends "core/base.html" %}
+{% block title %}{{ item.public_number }} — {{ product_name }}{% endblock %}
+{% block content %}
+<h2>Заявка {{ item.public_number }}</h2>
+<dl>
+    <dt>Статус</dt><dd>{{ item.status }}</dd>
+    <dt>Ребёнок</dt><dd>{{ item.child_full_name }}, {{ item.child_age }} лет</dd>
+    <dt>Курс</dt><dd>{% if course %}{{ course.name }} — {{ course.description }}{% else %}—{% endif %}</dd>
+    <dt>Родитель</dt><dd>{{ item.parent_full_name }}</dd>
+    <dt>Телефон</dt><dd>{{ item.parent_phone }}</dd>
+    <dt>Email</dt><dd>{{ item.parent_email }}</dd>
+    <dt>Удобное время</dt><dd>{{ item.preferred_time|default:"—" }}</dd>
+    <dt>Комментарий</dt><dd>{{ item.comment|default:"—" }}</dd>
+    <dt>Создана</dt><dd>{{ item.created_at }}</dd>
+</dl>
+<p class="muted">
+    Для проверки «чужой заявки» откройте эту же страницу с другим параметром
+    <code>?parent_phone=...</code> — система перенаправит на страницу отказа.
+</p>
+<a class="btn btn-secondary" href="{% url 'request_list' %}">К списку</a>
+{% endblock %}

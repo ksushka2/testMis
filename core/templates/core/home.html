@@ -1,0 +1,12 @@
+{% extends "core/base.html" %}
+{% block title %}{{ product_name }} — главная{% endblock %}
+{% block content %}
+<p>{{ description }}</p>
+<p>Выберите действие в меню или перейдите к основным функциям системы:</p>
+<ul>
+    <li><a href="{% url 'request_create' %}">Подать заявку на курс</a> — запись данных родителя и ребёнка;</li>
+    <li><a href="{% url 'request_list' %}">Посмотреть список заявок</a> — просмотр принятых заявок;</li>
+    <li><a href="{% url 'request_detail' pk=1 %}">Открыть заявку IT-2026-001</a> — карточка одной записи;</li>
+    <li><a href="{% url 'request_detail' pk=1 %}?parent_phone=%2B79999999999">Проверить отказ «чужая заявка»</a> — неверный телефон родителя.</li>
+</ul>
+{% endblock %}

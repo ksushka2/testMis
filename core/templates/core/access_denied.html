@@ -1,0 +1,18 @@
+{% extends "core/base.html" %}
+{% block title %}Отказ — {{ product_name }}{% endblock %}
+{% block content %}
+<h2>Действие не выполнено</h2>
+<div class="error-box">
+    <p><strong>{{ reason_title }}</strong></p>
+    <p>{{ detail }}</p>
+    {% if attempted %}
+    <p class="muted">Попытка доступа к заявке: {{ attempted }}</p>
+    {% endif %}
+</div>
+<p>Что можно сделать:</p>
+<ul>
+    <li>исправить данные и <a href="{% url 'request_create' %}">отправить заявку заново</a>;</li>
+    <li>открыть <a href="{% url 'request_list' %}">список своих заявок</a> с корректным телефоном родителя;</li>
+    <li>вернуться на <a href="{% url 'home' %}">главную</a>.</li>
+</ul>
+{% endblock %}

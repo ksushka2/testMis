@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{{ product_name }}{% endblock %}</title>
+    <style>
+        :root {
+            color-scheme: light;
+        }
+        body {
+            font-family: system-ui, sans-serif;
+            max-width: 48rem;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+            line-height: 1.55;
+        }
+        header {
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+        }
+        header h1 {
+            font-size: 1.35rem;
+            margin: 0 0 0.5rem;
+        }
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem 1.25rem;
+            font-size: 0.95rem;
+        }
+        nav a { color: #0b57d0; }
+        nav a[aria-current="page"] {
+            color: #111;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .muted { color: #555; }
+        .error-box {
+            border: 1px solid #c62828;
+            background: #ffebee;
+            padding: 1rem;
+            border-radius: 6px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        th, td {
+            border-bottom: 1px solid #eee;
+            text-align: left;
+            padding: 0.5rem 0.35rem;
+        }
+        label { display: block; margin-top: 0.75rem; font-weight: 600; }
+        input, select, textarea {
+            width: 100%;
+            max-width: 28rem;
+            padding: 0.4rem 0.5rem;
+            margin-top: 0.25rem;
+            box-sizing: border-box;
+        }
+        button, .btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.45rem 0.9rem;
+            background: #0b57d0;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        .btn-secondary {
+            background: #eee;
+            color: #111;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{{ product_name }}</h1>
+        <nav>
+            <a href="{% url 'home' %}" {% if active_nav == 'home' %}aria-current="page"{% endif %}>Главная</a>
+            <a href="{% url 'request_list' %}" {% if active_nav == 'list' %}aria-current="page"{% endif %}>Заявки</a>
+            <a href="{% url 'request_create' %}" {% if active_nav == 'new' %}aria-current="page"{% endif %}>Новая заявка</a>
+            <a href="{% url 'access_denied' %}?reason=demo&amp;detail=Пример страницы отказа для проверки." {% if active_nav == 'denied' %}aria-current="page"{% endif %}>Отказ</a>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <p class="muted" style="margin-top: 2rem;">Версия {{ version }}</p>
+</body>
+</html>

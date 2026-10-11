@@ -1,0 +1,39 @@
+{% extends "core/base.html" %}
+{% block title %}Новая заявка — {{ product_name }}{% endblock %}
+{% block content %}
+<h2>Подать заявку на курс</h2>
+<p class="muted">Данные сохраняются в JSON-файл до перезапуска контейнера или следующей лабораторной.</p>
+<form method="post" action="{% url 'request_create' %}">
+    {% csrf_token %}
+    <label for="child_full_name">ФИО ребёнка *</label>
+    <input id="child_full_name" name="child_full_name" required maxlength="120">
+
+    <label for="child_age">Возраст ребёнка *</label>
+    <input id="child_age" name="child_age" type="number" min="5" max="18" required>
+
+    <label for="parent_full_name">ФИО родителя *</label>
+    <input id="parent_full_name" name="parent_full_name" required maxlength="120">
+
+    <label for="parent_phone">Телефон родителя *</label>
+    <input id="parent_phone" name="parent_phone" required placeholder="+79001234567">
+
+    <label for="parent_email">Email родителя *</label>
+    <input id="parent_email" name="parent_email" type="email" required>
+
+    <label for="course_id">Курс *</label>
+    <select id="course_id" name="course_id" required>
+        {% for c in courses %}
+        <option value="{{ c.id }}">{{ c.name }} ({{ c.min_age }}–{{ c.max_age }} лет)</option>
+        {% endfor %}
+    </select>
+
+    <label for="preferred_time">Удобное время занятий</label>
+    <input id="preferred_time" name="preferred_time" placeholder="Например: Сб 14:00">
+
+    <label for="comment">Комментарий</label>
+    <textarea id="comment" name="comment" rows="3"></textarea>
+
+    <button type="submit">Отправить заявку</button>
+</form>
+<p class="muted">Для проверки отказа укажите возраст вне диапазона выбранного курса.</p>
+{% endblock %}

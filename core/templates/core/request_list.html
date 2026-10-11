@@ -1,0 +1,32 @@
+{% extends "core/base.html" %}
+{% block title %}Заявки — {{ product_name }}{% endblock %}
+{% block content %}
+<h2>Заявки на курсы</h2>
+<p class="muted">Просмотр данных из файла <code>core/data/requests.json</code>.</p>
+{% if requests %}
+<table>
+    <thead>
+        <tr>
+            <th>Номер</th>
+            <th>Ребёнок</th>
+            <th>Курс</th>
+            <th>Статус</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for r in requests %}
+        <tr>
+            <td>{{ r.public_number }}</td>
+            <td>{{ r.child_full_name }}, {{ r.child_age }} лет</td>
+            <td>{{ r.course_name }}</td>
+            <td>{{ r.status }}</td>
+            <td><a href="{% url 'request_detail' pk=r.id %}">Открыть</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Заявок пока нет. <a href="{% url 'request_create' %}">Создайте первую</a>.</p>
+{% endif %}
+{% endblock %}

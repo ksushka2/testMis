@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "public_number": "IT-2026-001",
+    "child_full_name": "Иванов Артём",
+    "child_age": 8,
+    "parent_full_name": "Иванова Мария",
+    "parent_phone": "+79001234567",
+    "parent_email": "maria@example.com",
+    "course_id": 1,
+    "preferred_time": "Сб 10:00",
+    "comment": "Первый опыт в IT-школе",
+    "status": "Новая",
+    "created_at": "2026-03-01T10:00:00"
+  }
+]
